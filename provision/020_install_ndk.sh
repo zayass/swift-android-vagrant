@@ -2,7 +2,7 @@
 NDK=android-ndk-r12b
 NDK_ZIP=$NDK-linux-x86_64.zip
 
-wget https://dl.google.com/android/repository/$NDK_ZIP --no-verbose 
+wget --progress=bar:force https://dl.google.com/android/repository/$NDK_ZIP
 unzip $NDK_ZIP
 rm $NDK_ZIP
 
@@ -18,4 +18,4 @@ popd
 
 NDK=`realpath $NDK`
 
-echo 'export ANDROID_NDK="'$NDK'"' >> $HOME/.profile
+echo 'export ANDROID_NDK="'$NDK'"' >> .profile
