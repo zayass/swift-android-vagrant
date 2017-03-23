@@ -43,4 +43,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/040_install_android_ld.sh"
   config.vm.provision "shell", path: "provision/050_johnno_home_fix.sh"
   config.vm.provision "shell", path: "provision/060_collect_libraries.sh", privileged: false
+  config.vm.provision "shell", path: "provision/070_fix_libicu.sh", privileged: false
 end
