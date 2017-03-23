@@ -1,5 +1,7 @@
 # swift-android-vagrant
 
+Based on prebuilt swift-android from https://github.com/apple/swift-corelibs-foundation/tree/master/android
+
 ## Vagrant
 
 Install vagrant from https://www.vagrantup.com/
