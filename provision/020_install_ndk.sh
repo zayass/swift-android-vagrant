@@ -1,5 +1,5 @@
 #!/bin/bash
-NDK=android-ndk-r12b
+NDK=android-ndk-r13b
 NDK_ZIP=$NDK-linux-x86_64.zip
 
 wget --progress=bar:force https://dl.google.com/android/repository/$NDK_ZIP

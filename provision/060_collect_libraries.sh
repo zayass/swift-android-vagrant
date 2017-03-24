@@ -18,6 +18,7 @@ SWIFT_LIBS=(
 'libswiftGlibc.so'
 'libswiftSwiftOnoneSupport.so'
 'libxml2.so'
+'libcurl.so'
 )
 
 mkdir -p $OUT
