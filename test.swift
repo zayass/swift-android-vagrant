@@ -2,6 +2,23 @@ import Dispatch
 import DispatchIntrospection
 import Foundation
 
+public func GDataGetXMLString<R>(_ str: String?, _ body: (UnsafePointer<Int>?) throws -> R?) rethrows -> R? {
+    return try str?.utf8CString.withUnsafeBufferPointer({ strBuffer in
+        try strBuffer.baseAddress?.withMemoryRebound(to: Int.self, capacity: str!.characters.count, { strXmlChars in
+            return try body(strXmlChars)
+        })
+    })
+}
+
+public func tesInference() {
+    let string: String? = "test"
+    GDataGetXMLString(string, { defaultPrefix in
+        NSLog("log")
+        NSLog("log")
+    })
+}
+
+
 public func testFoundation(){
   // Make an URLComponents instance
   let swifty = NSURLComponents(string: "https://swift.org")!
