@@ -19,3 +19,4 @@ popd
 NDK=`realpath $NDK`
 
 echo 'export ANDROID_NDK="'$NDK'"' >> .profile
+echo 'export PATH="$ANDROID_NDK:$PATH"' >> .profile

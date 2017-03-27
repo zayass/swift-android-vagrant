@@ -7,4 +7,4 @@ rm android_toolchain.tgz
 SWIFT=`realpath swift/build/Ninja-ReleaseAssert/swift-linux-x86_64/`
 
 echo 'export SWIFT="'$SWIFT'"' >> .profile
-echo 'export PATH="'$SWIFT'/bin:$PATH"' >> .profile
+echo 'export PATH="$SWIFT/bin:$PATH"' >> .profile
