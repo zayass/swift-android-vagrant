@@ -24,7 +24,12 @@ public func testFoundation(){
   let swifty = NSURLComponents(string: "https://swift.org")!
   // Print something useful about the URL
   NSLog("\(swifty.host!)")
-  // Output: "swift.org"
+
+
+  let filename = "/data/local/tmp/file"
+  let contents = try? String(contentsOfFile: filename, encoding: .utf8)
+
+  NSLog(contents ?? "Cannot read file \(filename)")
 }
 
 public func testSwift(){
