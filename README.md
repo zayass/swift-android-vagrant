@@ -1,6 +1,6 @@
 # swift-android-vagrant
 
-Based on prebuilt swift-android from https://github.com/apple/swift-corelibs-foundation/tree/master/android
+Set of scripts for building swift environment for android. libdispatch and foundation scripts based on https://github.com/apple/swift-corelibs-foundation/tree/master/android
 
 ## Vagrant
 
