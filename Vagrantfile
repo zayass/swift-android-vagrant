@@ -39,18 +39,18 @@ Vagrant.configure("2") do |config|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
 
-  config.vm.provision "shell", path: "010_install_dependencies.sh"
-  config.vm.provision "shell", path: "020_install_ndk.sh", privileged: false
-  config.vm.provision "shell", path: "030_build_libicu.sh", privileged: false
-  config.vm.provision "shell", path: "040_clone_swift.sh", privileged: false
-  config.vm.provision "shell", path: "050_build_swift.sh", privileged: false
-  config.vm.provision "shell", path: "060_install_android_ld.sh"
-  config.vm.provision "shell", path: "070_build_corelibs_libdispatch.sh"
-  config.vm.provision "shell", path: "080_build_corelibs_foundation.sh"
-  config.vm.provision "shell", path: "090_install_libraries.sh", privileged: false
-  config.vm.provision "shell", path: "100_correct_permissions.sh"
-  config.vm.provision "shell", path: "110_collect_libraries.sh", privileged: false
-  config.vm.provision "shell", path: "120_fix_libicu.sh", privileged: false
+  config.vm.provision "shell", path: "provision/010_install_dependencies.sh"
+  config.vm.provision "shell", path: "provision/020_install_ndk.sh", privileged: false
+  config.vm.provision "shell", path: "provision/030_build_libicu.sh", privileged: false
+  config.vm.provision "shell", path: "provision/040_clone_swift.sh", privileged: false
+  config.vm.provision "shell", path: "provision/050_build_swift.sh", privileged: false
+  config.vm.provision "shell", path: "provision/060_install_android_ld.sh"
+  config.vm.provision "shell", path: "provision/070_build_corelibs_libdispatch.sh"
+  config.vm.provision "shell", path: "provision/080_build_corelibs_foundation.sh"
+  config.vm.provision "shell", path: "provision/090_install_libraries.sh", privileged: false
+  config.vm.provision "shell", path: "provision/100_correct_permissions.sh"
+  config.vm.provision "shell", path: "provision/110_collect_libraries.sh", privileged: false
+  config.vm.provision "shell", path: "provision/120_fix_libicu.sh", privileged: false
 
 
 end
