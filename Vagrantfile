@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
 
   if ENV.has_key? 'VAGRANT_SHARED_FOLDER'
     puts "Host folder: #{ENV['VAGRANT_SHARED_FOLDER']} will be mounted to guest: ~/shared"
-    config.vm.synced_folder ENV['VAGRANT_SHARED_FOLDER'], "/home/ubuntu/shared"
+    config.vm.synced_folder ENV['VAGRANT_SHARED_FOLDER'], "/home/vagrant/shared"
   end
 
   config.vm.provider "virtualbox" do |vb|
