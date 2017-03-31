@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     # Building swift requires significant resources
-    vb.memory = "6144"
+    vb.memory = "4096"
     vb.cpus = 4
   end
 
@@ -51,6 +51,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/100_correct_permissions.sh"
   config.vm.provision "shell", path: "provision/110_collect_libraries.sh", privileged: false
   config.vm.provision "shell", path: "provision/120_fix_libicu.sh", privileged: false
+  config.vm.provision "shell", path: "provision/130_clean.sh"
 
 
 end

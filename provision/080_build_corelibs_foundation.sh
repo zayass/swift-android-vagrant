@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .profile
+source .profile.tmp
 
 export DOWNLOAD_URL_ZLIB=http://zlib.net/zlib-1.2.11.tar.gz
 export DOWNLOAD_URL_OPENSSL=https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz
@@ -11,7 +11,7 @@ export GIT_URL_CORELIBS_FOUNDATION=https://github.com/apple/swift-corelibs-found
 export TOOLCHAIN=`realpath ./android-standalone-toolchain`
 export SYSROOT=$TOOLCHAIN/sysroot
 
-echo 'export ANDROID_STANDALONE_TOOLCHAIN="'$SYSROOT'"' >> .profile
+echo 'export ANDROID_STANDALONE_TOOLCHAIN="'$TOOLCHAIN'"' >> .profile.tmp
 
 # Create Android toolchain
 $ANDROID_NDK/build/tools/make_standalone_toolchain.py --api 21 --arch arm --stl libc++ --install-dir $TOOLCHAIN --force -v

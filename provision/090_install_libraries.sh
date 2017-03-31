@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .profile
+source .profile.tmp
 
 pushd $SWIFT_LIB
 	include=.
@@ -12,11 +12,11 @@ pushd $SWIFT_LIB
 
 	# foundation dependencies
 	# curl
-	cp -r $ANDROID_STANDALONE_TOOLCHAIN/usr/include/curl $include
-	cp $ANDROID_STANDALONE_TOOLCHAIN/usr/lib/libcurl.so $so
+	cp -r $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/curl $include
+	cp $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/lib/libcurl.so $so
 	# libxml
-	cp -r $ANDROID_STANDALONE_TOOLCHAIN/usr/include/libxml2/libxml $include
-	cp $ANDROID_STANDALONE_TOOLCHAIN/usr/lib/libxml2.so $so
+	cp -r $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/libxml2/libxml $include
+	cp $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/lib/libxml2.so $so
 
 	# dispatch
 	cp -r /usr/local/lib/swift/dispatch $include

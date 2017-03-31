@@ -12,11 +12,11 @@ pushd $NDK
 	popd
 
 	pushd platforms
-		rm -r android-9 android-12 android-13 android-14 android-15 android-17 android-18 android-19 android-22 android-23 android-24
+		rm -r android-9 android-12 android-13 android-14 android-15 android-16 android-17 android-18 android-19 android-22 android-23 android-24
 	popd
 popd
 
 NDK=`realpath $NDK`
 
-echo 'export ANDROID_NDK="'$NDK'"' >> .profile
-echo 'export PATH="$ANDROID_NDK:$PATH"' >> .profile
+echo 'export ANDROID_NDK="'$NDK'"' >> .profile.tmp
+echo 'export PATH="$ANDROID_NDK:$PATH"' >> .profile.tmp

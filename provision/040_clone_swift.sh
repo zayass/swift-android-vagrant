@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .profile
+source .profile.tmp
 
 TAG="swift-3.1-RELEASE"
 
@@ -12,4 +12,4 @@ pushd swift-source
 	swift/utils/update-checkout --tag $TAG
 popd
 
-echo 'export SWIFT_SOURCE="'`realpath ./swift-source`'"' >> .profile
+echo 'export SWIFT_SOURCE="'`realpath ./swift-source`'"' >> .profile.tmp

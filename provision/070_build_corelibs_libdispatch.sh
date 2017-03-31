@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .profile
+source .profile.tmp
 
 pushd $SWIFT_SOURCE
 

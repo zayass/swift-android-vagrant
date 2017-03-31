@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .profile
+source .profile.tmp
 
 pushd $SWIFT_SOURCE/swift
 	utils/build-script \
@@ -18,8 +18,8 @@ pushd $SWIFT_SOURCE/swift
 		--xctest
 popd
 
-echo 'export SWIFT_BUILDPATH="$SWIFT_SOURCE/build/Ninja-ReleaseAssert"' >> .profile
-echo 'export SWIFT_HOME="$SWIFT_BUILDPATH/swift-linux-x86_64"' >> .profile
-echo 'export SWIFT_LIB="$SWIFT_HOME/lib/swift"' >> .profile
+echo 'export SWIFT_BUILDPATH="$SWIFT_SOURCE/build/Ninja-ReleaseAssert"' >> .profile.tmp
+echo 'export SWIFT_HOME="$SWIFT_BUILDPATH/swift-linux-x86_64"' >> .profile.tmp
+echo 'export SWIFT_LIB="$SWIFT_HOME/lib/swift"' >> .profile.tmp
 
-echo 'export PATH="$SWIFT_HOME/bin:$PATH"' >> .profile
+echo 'export PATH="$SWIFT_HOME/bin:$PATH"' >> .profile.tmp
