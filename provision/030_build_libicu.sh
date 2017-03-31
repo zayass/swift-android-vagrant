@@ -2,7 +2,7 @@
 
 source .profile.tmp
 
-git clone https://github.com/SwiftAndroid/libiconv-libicu-android.git libiconv-libicu-android
+git clone https://github.com/andriydruk/libiconv-libicu-android.git libiconv-libicu-android
 
 pushd ./libiconv-libicu-android 
 	./build.sh
