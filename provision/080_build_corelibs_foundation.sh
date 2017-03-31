@@ -11,7 +11,7 @@ export GIT_URL_CORELIBS_FOUNDATION=https://github.com/apple/swift-corelibs-found
 export TOOLCHAIN=`realpath ./android-standalone-toolchain`
 export SYSROOT=$TOOLCHAIN/sysroot
 
-echo 'export ANDROID_STANDALONE_TOOLCHAIN="$SYSROOT"' >> .profile
+echo 'export ANDROID_STANDALONE_TOOLCHAIN="'$SYSROOT'"' >> .profile
 
 # Create Android toolchain
 $ANDROID_NDK/build/tools/make_standalone_toolchain.py --api 21 --arch arm --stl libc++ --install-dir $TOOLCHAIN --force -v

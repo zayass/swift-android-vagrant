@@ -26,3 +26,5 @@ do
 done
 
 cp $LIB_CPP $OUT
+
+cp -r $OUT /vagrant
