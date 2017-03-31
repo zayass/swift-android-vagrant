@@ -175,7 +175,7 @@ pushd $TOOLCHAIN/sysroot
 
 			# Undo those nasty changes
 			unlink $SWIFT_BUILDPATH/swift-linux-x86_64/lib/swift/linux/armv7
-			unlink $SYSROOT/usr/include/curl $SYSROOT/usr/include/curl/curl
+			unlink $SYSROOT/usr/include/curl/curl
 		popd
 
 	popd
