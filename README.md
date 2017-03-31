@@ -20,4 +20,4 @@ Connect to vm
 vagrant ssh
 ```
 
-Required shared libraries collected to ```~/libs```
+Required shared libraries collected to ```~/libs``` on guest and ```project_dir/libs``` on host
