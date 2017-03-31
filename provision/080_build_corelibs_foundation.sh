@@ -39,7 +39,7 @@ pushd $TOOLCHAIN/sysroot
 	# Download and compile zlib
 
 	mkdir src/zlib
-	wget $DOWNLOAD_URL_ZLIB -O downloads/zlib.tar.gz
+	wget --progress=bar:force $DOWNLOAD_URL_ZLIB -O downloads/zlib.tar.gz
 	tar -xvf downloads/zlib.tar.gz -C src/zlib --strip-components=1
 
 	pushd src/zlib
@@ -51,7 +51,7 @@ pushd $TOOLCHAIN/sysroot
 	# Download and compile openssl
 
 	mkdir src/openssl
-	wget $DOWNLOAD_URL_OPENSSL -O downloads/openssl.tar.gz # 1.0.2h was the current version at the moment where this script has been written 
+	wget --progress=bar:force $DOWNLOAD_URL_OPENSSL -O downloads/openssl.tar.gz # 1.0.2h was the current version at the moment where this script has been written 
 	tar -xvf downloads/openssl.tar.gz -C src/openssl --strip-components=1
 
 	pushd src/openssl
