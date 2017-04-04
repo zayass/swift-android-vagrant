@@ -50,8 +50,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/090_install_libraries.sh", privileged: false
   config.vm.provision "shell", path: "provision/100_correct_permissions.sh"
   config.vm.provision "shell", path: "provision/110_collect_libraries.sh", privileged: false
-  #config.vm.provision "shell", path: "provision/120_fix_libicu.sh", privileged: false
-  config.vm.provision "shell", path: "provision/130_clean.sh"
+  config.vm.provision "shell", path: "provision/120_clean.sh"
 
 
 end

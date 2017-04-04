@@ -20,5 +20,6 @@ echo "export SWIFT_HOME=\"$SWIFT_HOME\"" >> .profile
 echo "export SWIFT_LIB=\"$SWIFT_LIB\"" >> .profile
 
 echo 'export PATH="$SWIFT_HOME/bin:$ANDROID_NDK:$PATH"' >> .profile
+echo 'export EDITOR=vim' >> .profile
 
 rm .profile.tmp
