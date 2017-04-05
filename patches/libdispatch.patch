@@ -29,7 +29,7 @@ index ec68417..c540f04 100644
  /*
   * Stub out defines for some mach types and related macros
 diff --git a/src/shims/lock.h b/src/shims/lock.h
-index a22517e..dedee8e 100644
+index a22517e..69e938c 100644
 --- a/src/shims/lock.h
 +++ b/src/shims/lock.h
 @@ -89,7 +89,7 @@ _dispatch_lock_has_failed_trylock(dispatch_lock lock_value)
@@ -41,12 +41,17 @@ index a22517e..dedee8e 100644
  #include <linux/membarrier.h>
  #endif
  #include <unistd.h>
-@@ -545,6 +545,8 @@ _dispatch_once_xchg_done(dispatch_once_t *pred)
- #if defined(__i386__) || defined(__x86_64__)
+@@ -546,9 +546,13 @@ _dispatch_once_xchg_done(dispatch_once_t *pred)
  	// On Intel, any load is a load-acquire, so we don't need to be fancy
  	return os_atomic_xchg(pred, DLOCK_ONCE_DONE, release);
-+#elif defined(__ANDROID__)
-+	return os_atomic_xchg(pred, DLOCK_ONCE_DONE, relaxed);
  #elif defined(__linux__)
++#if defined(__ANDROID__)
++	os_atomic_thread_fence(seq_cst);
++#else
  	if (unlikely(syscall(__NR_membarrier, MEMBARRIER_CMD_SHARED, 0) < 0)) {
  		DISPATCH_INTERNAL_CRASH(errno, "sys_membarrier not supported");
+ 	}
++#endif
+ 	return os_atomic_xchg(pred, DLOCK_ONCE_DONE, relaxed);
+ #else
+ #  error dispatch_once algorithm not available for this port
