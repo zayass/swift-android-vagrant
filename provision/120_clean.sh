@@ -3,7 +3,7 @@
 source .profile.tmp
 
 pushd $SWIFT_SOURCE
-	ls | grep -v '^build$'| xargs rm -rf
+	# ls | grep -v '^build$'| xargs rm -rf
 
 	# pushd build/Ninja-ReleaseAssert
 	# 	ls | grep -v '^swift-linux-x86_64$' | xargs rm -rf
