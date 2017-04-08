@@ -168,8 +168,8 @@ pushd $TOOLCHAIN/sysroot
 			# SYSROOT is not being passed from build.py / script.py to the ninja file yet
 			echo "SYSROOT=$SYSROOT" > build.ninja.new
 			cat build.ninja >> build.ninja.new
-			rm build.ninja
-			mv build.ninja.new build.ninja
+			sed 's%\-rpath \\\$\$ORIGIN %%g' build.ninja.new > build.ninja
+			rm build.ninja.new
 
 			/usr/bin/ninja
 

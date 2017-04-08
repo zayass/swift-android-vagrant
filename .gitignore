@@ -1,4 +1,7 @@
 .vagrant
 *.log
 *.box
-libs
+*.so
+*.swiftmodule
+build/
+.build/

@@ -23,3 +23,8 @@ echo 'export PATH="$SWIFT_HOME/bin:$ANDROID_NDK:$PATH"' >> .profile
 echo 'export EDITOR=vim' >> .profile
 
 rm .profile.tmp
+
+echo >> .bashrc
+echo >> .bashrc
+cat /vagrant/functions.sh >> .bashrc
+cat /vagrant/functions.sh | grep '()' | grep -o '\w*' | xargs -L 1 echo export -f >> .bashrc

@@ -1,0 +1,27 @@
+diff --git a/Sources/XCTest/Private/PrintObserver.swift b/Sources/XCTest/Private/PrintObserver.swift
+index f9b54a8..44a5f0f 100644
+--- a/Sources/XCTest/Private/PrintObserver.swift
++++ b/Sources/XCTest/Private/PrintObserver.swift
+@@ -59,7 +59,9 @@ internal class PrintObserver: XCTestObservation {
+ 
+     fileprivate func printAndFlush(_ message: String) {
+         print(message)
++#if !os(Android)
+         fflush(stdout)
++#endif
+     }
+ 
+     private func formatTimeInterval(_ timeInterval: TimeInterval) -> String {
+diff --git a/Sources/XCTest/Public/XCTestMain.swift b/Sources/XCTest/Public/XCTestMain.swift
+index fcf4c44..34995d8 100644
+--- a/Sources/XCTest/Public/XCTestMain.swift
++++ b/Sources/XCTest/Public/XCTestMain.swift
+@@ -22,7 +22,7 @@
+ 
+ #if os(macOS)
+     import Darwin
+-#elseif os(Linux) || os(FreeBSD)
++#elseif os(Linux) || os(FreeBSD) || os(Android)
+     import Glibc
+ #endif
+ 

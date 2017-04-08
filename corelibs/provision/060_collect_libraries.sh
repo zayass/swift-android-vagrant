@@ -7,16 +7,17 @@ OUT="libs/"
 LIB_CPP="$ANDROID_NDK/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++_shared.so"
 
 SWIFT_LIBS=(
-'libFoundation.so'
-'libdispatch.so'
 'libicudata.so'
 'libicui18n.so'
 'libicuuc.so'
-'libswiftCore.so'
 'libswiftGlibc.so'
+'libswiftCore.so'
 'libswiftSwiftOnoneSupport.so'
-'libxml2.so'
+'libdispatch.so'
 'libcurl.so'
+'libxml2.so'
+'libFoundation.so'
+'libXCTest.so'
 )
 
 mkdir -p $OUT
