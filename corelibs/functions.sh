@@ -26,7 +26,7 @@ build_swift_module() {
 		"$@"
 }
 
-build_swift_excutable() {
+build_swift_executable() {
 	swift_android \
 		-emit-executable \
 		-Xlinker -pie \
