@@ -1,3 +1,36 @@
+diff --git a/CoreFoundation/Base.subproj/CFInternal.h b/CoreFoundation/Base.subproj/CFInternal.h
+index a716f90..474d953 100644
+--- a/CoreFoundation/Base.subproj/CFInternal.h
++++ b/CoreFoundation/Base.subproj/CFInternal.h
+@@ -334,6 +334,16 @@ CF_PRIVATE Boolean __CFProcessIsRestricted();
+ #define STACK_BUFFER_DECL(T, N, C) T N[C]
+ #endif
+ 
++#ifdef __ANDROID__
++// Avoids crashes on Android
++// https://bugs.swift.org/browse/SR-2587
++// https://bugs.swift.org/browse/SR-2588
++// Seemed to be a linker/relocation? problem.
++// CFStrings using CONST_STRING_DECL() were not working
++// Applies reference to _NSCFConstantString's isa here
++// rather than using a linker option to create an alias.
++#define __CFConstantStringClassReference _TMC10Foundation19_NSCFConstantString
++#endif
+ 
+ CF_EXPORT void * __CFConstantStringClassReferencePtr;
+ 
+diff --git a/CoreFoundation/Base.subproj/CFRuntime.c b/CoreFoundation/Base.subproj/CFRuntime.c
+index 2672704..2ce6270 100644
+--- a/CoreFoundation/Base.subproj/CFRuntime.c
++++ b/CoreFoundation/Base.subproj/CFRuntime.c
+@@ -741,6 +741,7 @@ Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2) {
+     if (NULL == cf1) { CRSetCrashLogMessage("*** CFEqual() called with NULL first argument ***"); HALT; }
+     if (NULL == cf2) { CRSetCrashLogMessage("*** CFEqual() called with NULL second argument ***"); HALT; }
+     if (cf1 == cf2) return true;
++
+     CFTYPE_OBJC_FUNCDISPATCH1(Boolean, cf1, isEqual:, cf2);
+     CFTYPE_OBJC_FUNCDISPATCH1(Boolean, cf2, isEqual:, cf1);
+     CFTYPE_SWIFT_FUNCDISPATCH1(Boolean, cf1, NSObject.isEqual, (CFSwiftRef)cf2);
 diff --git a/CoreFoundation/Base.subproj/SwiftRuntime/CoreFoundation.h b/CoreFoundation/Base.subproj/SwiftRuntime/CoreFoundation.h
 index 99c4d6d..d02e6fe 100644
 --- a/CoreFoundation/Base.subproj/SwiftRuntime/CoreFoundation.h
