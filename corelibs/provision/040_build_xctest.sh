@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source .profile.tmp
-source /vagrant/functions.sh
+source /vagrant/configs/functions.sh
 
 src=$SWIFT_SOURCE/swift-corelibs-xctest
 build_dir=$SWIFT_BUILDPATH/xctest-linux-x86_64

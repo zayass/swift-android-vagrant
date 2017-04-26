@@ -8,6 +8,9 @@ export GIT_URL_CURL=https://github.com/curl/curl.git
 export GIT_URL_LIBXML2=git://git.gnome.org/libxml2
 export GIT_URL_CORELIBS_FOUNDATION=https://github.com/apple/swift-corelibs-foundation.git
 
+export CURL_VERSION=curl-7_54_0
+export LIBXML2_VERSION=v2.9.4
+
 export TOOLCHAIN=`realpath ./android-standalone-toolchain`
 export SYSROOT=$TOOLCHAIN/sysroot
 
@@ -86,6 +89,7 @@ pushd $TOOLCHAIN/sysroot
 	git clone $GIT_URL_CURL src/curl
 
 	pushd src/curl
+		git checkout $CURL_VERSION
 		autoreconf -i
 		./configure --host=arm-linux-androideabi --enable-shared --disable-static --disable-dependency-tracking --with-zlib=$SYSROOT/usr --with-ssl=$SYSROOT/usr --without-ca-bundle --without-ca-path --enable-ipv6 --enable-http --enable-ftp --disable-file --disable-ldap --disable-ldaps --disable-rtsp --disable-proxy --disable-dict --disable-telnet --disable-tftp --disable-pop3 --disable-imap --disable-smtp --disable-gopher --disable-sspi --disable-manual --target=arm-linux-androideabi --build=x86_64-unknown-linux-gnu --prefix=$SYSROOT/usr
 		make
@@ -97,6 +101,7 @@ pushd $TOOLCHAIN/sysroot
 	git clone $GIT_URL_LIBXML2 src/libxml2
 
 	pushd src/libxml2
+		git checkout $LIBXML2_VERSION
 		autoreconf -i
 		./configure --with-sysroot=$SYSROOT --with-zlib=$SYSROOT/usr --prefix=$SYSROOT/usr --host=$CHOST --without-lzma --disable-static --enable-shared --without-http --without-ftp
 		make libxml2.la

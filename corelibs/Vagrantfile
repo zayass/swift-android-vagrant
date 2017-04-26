@@ -14,7 +14,11 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
     vb.cpus = 4
+
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--usbxhci", "on"]
   end
+
 
   config.vm.provision "shell", path: "provision/010_build_corelibs_libdispatch.sh"
   config.vm.provision "shell", path: "provision/020_build_corelibs_foundation.sh"
@@ -22,7 +26,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/040_build_xctest.sh", privileged: false
   config.vm.provision "shell", path: "provision/050_correct_permissions.sh"
   config.vm.provision "shell", path: "provision/060_collect_libraries.sh", privileged: false
-  config.vm.provision "shell", path: "provision/070_clean.sh"
-  config.vm.provision "shell", path: "provision/080_setup_devtools.sh", privileged: false
+  config.vm.provision "shell", path: "provision/070_lldb_workarounds.sh", privileged: false
+  config.vm.provision "shell", path: "provision/080_clean.sh"
+  config.vm.provision "shell", path: "provision/090_setup_devtools.sh", privileged: false
+  config.vm.provision "shell", path: "provision/100_install_adb.sh"
 
 end
